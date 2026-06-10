@@ -60,4 +60,4 @@ Hands-on labs focused on IBM i application modernization using the IBM Bob AI as
 
 ---
 
-Last updated: 9 June 2025
+Last updated: 9 June 2026
