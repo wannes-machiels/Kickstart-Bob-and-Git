@@ -1,5 +1,9 @@
 # IBM i BOB — Installatiegids
 
+🔙 [Terug naar hoofdmenu](../../README.md)
+
+---
+
 ## Inhoud
 
 1. [Installatie van Node.js](#1-installatie-van-nodejs)
@@ -162,3 +166,15 @@ https://github.com/bmarolleau/IBM-i-Application-Modernization-with-Bob.git
 ### Resultaat
 
 Als je **User Library List** verschijnt, is de verbinding gelukt ✅
+
+---
+
+## Volgende Stappen
+
+- **Leer Git gebruiken**: [How to Git Good](How-to-Git-good.md)
+- **Bekijk Git referentie**: [Git Referentiekaart](git-referentiekaart.md)
+- **Volledige Engelstalige setup**: [Complete Setup Guide](../en/01-prerequisites.md)
+
+---
+
+🔙 [Terug naar hoofdmenu](../../README.md)

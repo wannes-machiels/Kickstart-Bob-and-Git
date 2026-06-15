@@ -13,6 +13,8 @@
 
 📋 [Snelle referentiekaart](git-referentiekaart.md)
 
+🔙 [Terug naar hoofdmenu](../../README.md)
+
 ---
 
 ## 1. Basis configuratie
@@ -422,3 +424,7 @@ git push
 ---
 
 📋 Bekijk de [Snelle referentiekaart](git-referentiekaart.md) voor een compact overzicht van alle commando's.
+
+---
+
+🔙 [Terug naar hoofdmenu](../../README.md)

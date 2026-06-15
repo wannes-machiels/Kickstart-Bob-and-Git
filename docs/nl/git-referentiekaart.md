@@ -1,5 +1,9 @@
 # Git — Snelle Referentiekaart
 
+🔙 [Terug naar How to Git Good](How-to-Git-good.md) | [Terug naar hoofdmenu](../../README.md)
+
+---
+
 | Commando | Wat doet het? |
 | --- | --- |
 | `git init` | Nieuw Git-project starten |
@@ -20,3 +24,7 @@
 | `git stash` | Wijzigingen tijdelijk opzijzetten |
 | `git stash pop` | Opzijgezette wijzigingen terughalen |
 | `git reset --soft HEAD~1` | Laatste commit ongedaan maken |
+
+---
+
+🔙 [Terug naar How to Git Good](How-to-Git-good.md) | [Terug naar hoofdmenu](../../README.md)
