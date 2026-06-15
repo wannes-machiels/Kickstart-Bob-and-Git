@@ -13,6 +13,7 @@ Complete setup documentation for IBM Bob and Git integration with IBM i.
 🔗 **[Main Documentation Hub](README.md)**
 
 #### English Guides
+
 - 🔗 [Prerequisites](docs/en/01-prerequisites.md)
 - 🔗 [IBM i Setup](docs/en/02-ibm-i-setup.md)
 - 🔗 [Source Migration](docs/en/03-source-migration.md)
@@ -23,6 +24,7 @@ Complete setup documentation for IBM Bob and Git integration with IBM i.
 - 🔗 [Quick Start Guide](docs/en/quick-start.md)
 
 #### Nederlandse Handleidingen
+
 - 🔗 [IBM Bob Installatiegids](docs/nl/IBM_Bob-Installatie-documentatie.md)
 - 🔗 [How to Git Good](docs/nl/How-to-Git-good.md)
 - 🔗 [Git Referentiekaart](docs/nl/git-referentiekaart.md)
@@ -64,20 +66,18 @@ Instructions for migrating existing sources to Git using the IFS.
 
 ---
 
-## 🧪 Hands-on Labs & Modernization
+## IBM Bob Resources
 
-### IBM Bob Resources
-
-#### Official IBM Bob Documentation
+### Official IBM Bob Documentation
 
 🔗 [IBM Bob Docs](https://bob.ibm.com/docs)
 🔗 [IBM Bob Support](https://bob.ibm.com/support)
 
 ---
 
-## 🧪 Hands-on Labs & Modernization
+### 🧪 Hands-on Labs & Modernization
 
-### Bobathon Belgium
+#### Bobathon Belgium
 
 Collection of hands-on labs designed to leverage IBM Bob as an AI development partner.
 
@@ -85,7 +85,7 @@ Collection of hands-on labs designed to leverage IBM Bob as an AI development pa
 
 ---
 
-### IBM i Application Modernization with Bob
+#### IBM i Application Modernization with Bob
 
 Hands-on labs focused on IBM i application modernization using the IBM Bob AI assistant.
 
