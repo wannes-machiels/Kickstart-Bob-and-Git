@@ -9,6 +9,7 @@
 This guide walks you through migrating your IBM i source code from traditional source physical files (like QRPGLESRC, QCLSRC) to the Integrated File System (IFS). This is a crucial step for modern development workflows and Git integration.
 
 **What You'll Do:**
+
 - Clone and build the migrate tool
 - Configure migration settings
 - Migrate source code to IFS
@@ -23,7 +24,7 @@ This guide walks you through migrating your IBM i source code from traditional s
 ### Benefits of IFS-Based Development
 
 | Traditional Source Physical Files | IFS-Based Development |
-|----------------------------------|----------------------|
+| ---------------------------------- | ---------------------- |
 | Locked to IBM i system | Accessible from any workstation |
 | Limited to 10-character names | Full filename support |
 | No native version control | Git integration |
@@ -33,6 +34,7 @@ This guide walks you through migrating your IBM i source code from traditional s
 ### What Happens During Migration?
 
 The migrate tool:
+
 1. Reads source members from source physical files
 2. Converts them to individual files on the IFS
 3. Preserves source code content and structure
@@ -66,7 +68,8 @@ ls -la
 ```
 
 **Expected Output:**
-```
+
+```bash
 drwxr-xr-x  3 youruser  0  Jun 15 08:00 migrate
 ```
 
@@ -78,6 +81,7 @@ ls -la
 ```
 
 You should see:
+
 - `migrate/` - Main tool directory
 - `README.md` - Documentation
 - Other supporting files
@@ -107,7 +111,8 @@ gmake
 ```
 
 **Expected Output:**
-```
+
+```bash
 gcc -c migrate.c -o migrate.o
 gcc migrate.o -o migrate
 Build complete
@@ -124,7 +129,8 @@ ls -la migrate
 ```
 
 **Expected Output:**
-```
+
+```bash
 Usage: migrate [options]
   -l LIBRARY    Source library name
   -d DIRECTORY  Target IFS directory
@@ -209,7 +215,8 @@ cd /home/youruser/migrate/migrate/migrate
 ### Monitor Migration Progress
 
 The tool will display progress:
-```
+
+```bash
 Migrating library: YOURLIB
 Processing QRPGLESRC...
   Migrating member: PROGRAM1 -> PROGRAM1.rpgle
@@ -232,7 +239,8 @@ ls -la
 ```
 
 **Expected Structure:**
-```
+
+```bash
 /home/youruser/sources/
 ├── QRPGLESRC/
 │   ├── PROGRAM1.rpgle
@@ -272,6 +280,7 @@ cat /home/youruser/sources/QRPGLESRC/PROGRAM1.rpgle
 ### Check for Issues
 
 Common things to verify:
+
 - [ ] All expected members were migrated
 - [ ] File extensions are correct (.rpgle, .clle, .dds, etc.)
 - [ ] File contents match original members
@@ -374,6 +383,7 @@ chmod -R 755 /home/youruser/sources/*/
 **Error**: `gmake: command not found`
 
 **Solution**:
+
 ```bash
 # Install make-gnu
 yum install make-gnu
@@ -385,6 +395,7 @@ yum install make-gnu
 **Error**: `gcc: command not found`
 
 **Solution**:
+
 ```bash
 # Install gcc
 yum install gcc
@@ -393,12 +404,14 @@ yum install gcc
 ### No Members Migrated
 
 **Possible Causes**:
+
 1. Wrong library name
 2. No source physical files in library
 3. No members in source files
 4. Permission issues
 
 **Solution**:
+
 ```bash
 # Verify library exists
 system "DSPLIB LIB(YOURLIB)"
@@ -415,6 +428,7 @@ system "DSPPFM FILE(YOURLIB/QRPGLESRC)"
 **Problem**: Special characters appear corrupted
 
 **Solution**:
+
 ```bash
 # Check current encoding
 locale
@@ -431,6 +445,7 @@ export LANG=en_US.UTF-8
 **Error**: `Permission denied: /home/youruser/sources`
 
 **Solution**:
+
 ```bash
 # Check directory permissions
 ls -la /home/youruser/
@@ -447,17 +462,20 @@ mkdir -m 755 /home/youruser/sources
 ## Best Practices
 
 ### Before Migration
+
 - [ ] Back up your source physical files
 - [ ] Document your library structure
 - [ ] Test migration on a small library first
 - [ ] Plan your IFS directory structure
 
 ### During Migration
+
 - [ ] Use verbose mode to monitor progress
 - [ ] Migrate one source file type at a time for large libraries
 - [ ] Keep a log of the migration process
 
 ### After Migration
+
 - [ ] Verify all files migrated successfully
 - [ ] Compare file counts with original members
 - [ ] Test compile a few programs from IFS

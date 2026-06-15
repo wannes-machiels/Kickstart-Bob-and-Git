@@ -9,6 +9,7 @@
 This guide walks you through setting up GitHub and connecting your IBM i source code repository for version control. You'll create a GitHub account, set up a repository, and establish the connection between your IBM i system and GitHub.
 
 **What You'll Do:**
+
 - Create a GitHub account (if needed)
 - Create a GitHub repository
 - Initialize Git in your sources directory
@@ -87,7 +88,8 @@ If you already have a GitHub account, skip to [Step 2](#step-2-create-a-github-r
 4. Configure your repository:
 
    **Repository name**: Choose a descriptive name
-   ```
+
+   ```txt
    Examples:
    - ibmi-sources
    - mycompany-rpg
@@ -95,7 +97,8 @@ If you already have a GitHub account, skip to [Step 2](#step-2-create-a-github-r
    ```
 
    **Description** (optional): Brief description of your project
-   ```
+
+   ```txt
    Example: "IBM i RPG and CL source code for ERP system"
    ```
 
@@ -107,7 +110,7 @@ If you already have a GitHub account, skip to [Step 2](#step-2-create-a-github-r
    - ❌ Do NOT check "Add a README file"
    - ❌ Do NOT add .gitignore
    - ❌ Do NOT choose a license
-   
+
    (We'll push existing code, so we want an empty repository)
 
 5. Click **Create repository**
@@ -117,12 +120,14 @@ If you already have a GitHub account, skip to [Step 2](#step-2-create-a-github-r
 After creation, you'll see a page with setup instructions. Copy the repository URL:
 
 **HTTPS format** (recommended for beginners):
-```
+
+```txt
 https://github.com/yourusername/ibmi-sources.git
 ```
 
 **SSH format** (for advanced users with SSH keys):
-```
+
+```txt
 git@github.com:yourusername/ibmi-sources.git
 ```
 
@@ -155,7 +160,8 @@ ls -la .git
 ```
 
 **Expected Output**:
-```
+
+```bash
 drwxr-xr-x  7 youruser  0  Jun 15 08:00 .git
 ```
 
@@ -175,7 +181,8 @@ git config --list
 ```
 
 **Expected Output**:
-```
+
+```bash
 user.name=John Smith
 user.email=john.smith@company.com
 ```
@@ -244,7 +251,8 @@ git status
 ```
 
 **Expected Output**:
-```
+
+```bash
 On branch main
 
 No commits yet
@@ -268,8 +276,8 @@ git add .
 git status
 ```
 
-**Expected Output**:
-```
+
+```bash
 On branch main
 
 No commits yet
@@ -290,7 +298,8 @@ git commit -m "Initial commit: Migrate source code from IBM i library YOURLIB"
 ```
 
 **Expected Output**:
-```
+
+```bash
 [main (root-commit) a1b2c3d] Initial commit: Migrate source code from IBM i library YOURLIB
  150 files changed, 15000 insertions(+)
  create mode 100644 .gitignore
@@ -314,7 +323,8 @@ git remote -v
 ```
 
 **Expected Output**:
-```
+
+```bash
 origin  https://github.com/yourusername/ibmi-sources.git (fetch)
 origin  https://github.com/yourusername/ibmi-sources.git (push)
 ```
@@ -358,7 +368,8 @@ GitHub no longer accepts passwords for HTTPS authentication. You need a Personal
 7. Click **Generate token**
 
 8. **IMPORTANT**: Copy the token immediately - you won't see it again!
-   ```
+
+   ```bash
    Example: ghp_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
    ```
 
@@ -423,11 +434,13 @@ git push -u origin main
 ```
 
 **If using HTTPS with PAT:**
+
 - Username: Your GitHub username
 - Password: Paste your Personal Access Token (not your GitHub password!)
 
 **Expected Output**:
-```
+
+```bash
 Enumerating objects: 150, done.
 Counting objects: 100% (150/150), done.
 Delta compression using up to 4 threads
@@ -509,6 +522,7 @@ git show <commit-hash>
 Write clear, descriptive commit messages:
 
 ✅ **Good Examples**:
+
 ```bash
 git commit -m "Add customer validation to order entry program"
 git commit -m "Fix: Correct date calculation in INVPGM"
@@ -516,6 +530,7 @@ git commit -m "Refactor: Extract common code to UTILPGM"
 ```
 
 ❌ **Bad Examples**:
+
 ```bash
 git commit -m "fix"
 git commit -m "update"
@@ -558,6 +573,7 @@ git push -u origin feature/new-report
 **Error**: `Authentication failed for 'https://github.com/...'`
 
 **Solution**:
+
 - Ensure you're using a Personal Access Token, not your password
 - Verify the token has `repo` scope
 - Check if token has expired
@@ -567,6 +583,7 @@ git push -u origin feature/new-report
 **Error**: `! [rejected] main -> main (fetch first)`
 
 **Solution**:
+
 ```bash
 # Pull latest changes first
 git pull origin main
@@ -582,6 +599,7 @@ git push
 **Error**: `remote: warning: Large files detected`
 
 **Solution**:
+
 ```bash
 # Add large files to .gitignore
 echo "*.SAVF" >> .gitignore
@@ -599,6 +617,7 @@ git commit -m "Remove large files from tracking"
 **Error**: `SSL certificate problem`
 
 **Solution**:
+
 ```bash
 # Update CA certificates
 yum install ca-certificates-mozilla

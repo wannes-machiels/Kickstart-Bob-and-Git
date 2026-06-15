@@ -9,6 +9,7 @@ This plan restructures the IBM Bob Kickstart Guide into a modular, maintainable 
 ## Current State Analysis
 
 ### Existing Files
+
 - `README.md` - Brief Dutch introduction (3 lines)
 - `IBM_Bob-Installatie-documentatie.md` - Dutch IBM Bob installation guide (164 lines)
 - `How-to-Git-good.md` - Comprehensive Dutch Git tutorial (424 lines)
@@ -17,6 +18,7 @@ This plan restructures the IBM Bob Kickstart Guide into a modular, maintainable 
 - **New content**: English IBM Bob Kickstart Guide (comprehensive, ~400+ lines)
 
 ### Key Observations
+
 1. **Language inconsistency**: Most docs are Dutch, but the new Kickstart Guide is English
 2. **Overlap**: IBM Bob installation exists in Dutch; Kickstart Guide covers it in English
 3. **Scope**: Kickstart Guide is comprehensive but monolithic
@@ -26,7 +28,7 @@ This plan restructures the IBM Bob Kickstart Guide into a modular, maintainable 
 
 ## Proposed Documentation Structure
 
-```
+```bash
 Kickstart-Bob-and-Git/
 ├── README.md                                    [UPDATED - Main entry point]
 ├── docs/
@@ -54,12 +56,14 @@ Kickstart-Bob-and-Git/
 ## Document Specifications
 
 ### 1. README.md (Main Entry Point)
+
 **Purpose**: Central navigation hub for all documentation  
 **Target Audience**: All users (beginners to advanced)  
 **Language**: Bilingual (Dutch intro + English sections)  
 **Estimated Length**: 80-120 lines
 
 **Content Outline**:
+
 ```markdown
 # IBM Bob & Git Kickstart Documentation
 
@@ -86,11 +90,13 @@ Kickstart-Bob-and-Git/
 ---
 
 ### 2. docs/en/01-prerequisites.md
+
 **Purpose**: System requirements and verification  
 **Target Audience**: System administrators, developers starting setup  
 **Estimated Length**: 150-200 lines
 
 **Content Outline**:
+
 1. **Introduction**
    - What you'll need before starting
    - Estimated setup time
@@ -116,11 +122,13 @@ Kickstart-Bob-and-Git/
 ---
 
 ### 3. docs/en/02-ibm-i-setup.md
+
 **Purpose**: Configure IBM i system for source code management  
 **Target Audience**: IBM i administrators  
 **Estimated Length**: 250-300 lines
 
 **Content Outline**:
+
 1. **Introduction**
    - Overview of what will be configured
    - Why IFS directories are needed
@@ -151,11 +159,13 @@ Kickstart-Bob-and-Git/
 ---
 
 ### 4. docs/en/03-source-migration.md
+
 **Purpose**: Migrate source code from traditional libraries to IFS  
 **Target Audience**: Developers, system administrators  
 **Estimated Length**: 250-300 lines
 
 **Content Outline**:
+
 1. **Introduction**
    - Why migrate to IFS
    - What the migrate tool does
@@ -194,11 +204,13 @@ Kickstart-Bob-and-Git/
 ---
 
 ### 5. docs/en/04-github-integration.md
+
 **Purpose**: Set up GitHub and connect local repository  
 **Target Audience**: Developers  
 **Estimated Length**: 250-300 lines
 
 **Content Outline**:
+
 1. **Introduction**
    - Benefits of GitHub integration
    - Overview of the process
@@ -244,11 +256,13 @@ Kickstart-Bob-and-Git/
 ---
 
 ### 6. docs/en/05-network-access.md
+
 **Purpose**: Configure network access to IFS from workstations  
 **Target Audience**: System administrators, developers  
 **Estimated Length**: 200-250 lines
 
 **Content Outline**:
+
 1. **Introduction**
    - Why network access is needed
    - Overview of setup for different OS
@@ -290,17 +304,18 @@ Kickstart-Bob-and-Git/
 ---
 
 ### 7. docs/en/06-ibm-bob-configuration.md
-**Purpose**: Configure IBM Bob in VS Code  
+
+**Purpose**: Configure IBM Bob for IBM i
 **Target Audience**: Developers  
 **Estimated Length**: 150-200 lines
 
 **Content Outline**:
+
 1. **Introduction**
    - What IBM Bob provides
-   - Prerequisites (VS Code installed)
+   - Prerequisites for IBM Bob
 
-2. **Install IBM Bob Extension**
-   - Find extension in VS Code marketplace
+2. **Install IBM Bob**
    - Installation steps
    - Verify installation
 
@@ -331,72 +346,74 @@ Kickstart-Bob-and-Git/
 ---
 
 ### 8. docs/en/troubleshooting.md
+
 **Purpose**: Solutions for common issues  
 **Target Audience**: All users  
 **Estimated Length**: 250-350 lines
 
 **Content Outline**:
+
 1. **Introduction**
    - How to use this guide
    - When to seek additional help
 
 2. **Git Issues**
    - Git clone fails
-     * Check internet connectivity
-     * Verify git installation
-     * Permission issues
+     - Check internet connectivity
+     - Verify git installation
+     - Permission issues
    - Git push authentication fails
-     * Personal access tokens
-     * SSH key setup
+     - Personal access tokens
+     - SSH key setup
    - Merge conflicts
-     * Understanding conflicts
-     * Resolution steps
+     - Understanding conflicts
+     - Resolution steps
 
 3. **IBM i Setup Issues**
    - gmake not found
-     * Installation steps
-     * Verification
+     - Installation steps
+     - Verification
    - Open source tools missing
-     * Check installation
-     * Install via yum
+     - Check installation
+     - Install via yum
    - Permission denied errors
-     * User profile permissions
-     * Directory permissions
+     - User profile permissions
+     - Directory permissions
 
 4. **Network Access Issues**
    - NetServer not running
-     * Start NetServer
-     * Verify status
+     - Start NetServer
+     - Verify status
    - Cannot connect to share
-     * Firewall settings
-     * Network configuration
-     * Credentials issues
+     - Firewall settings
+     - Network configuration
+     - Credentials issues
    - Mapped drive disconnects
-     * Persistent connection setup
-     * Credential manager
+     - Persistent connection setup
+     - Credential manager
 
 5. **IBM Bob Issues**
    - Cannot connect to IBM i
-     * Connection settings
-     * Credentials
-     * Network connectivity
+     - Connection settings
+     - Credentials
+     - Network connectivity
    - Compilation errors
-     * Library list configuration
-     * Source directory settings
+     - Library list configuration
+     - Source directory settings
    - Extension not working
-     * Reinstall steps
-     * VS Code updates
+     - Reinstall steps
+     - VS Code updates
 
 6. **Migration Issues**
    - Migrate tool build fails
-     * Dependencies
-     * Compiler issues
+     - Dependencies
+     - Compiler issues
    - Source files corrupted
-     * Encoding issues
-     * Character set problems
+     - Encoding issues
+     - Character set problems
    - Missing files after migration
-     * Verify source libraries
-     * Check migrate configuration
+     - Verify source libraries
+     - Check migrate configuration
 
 7. **Getting Additional Help**
    - IBM Bob documentation
@@ -407,11 +424,13 @@ Kickstart-Bob-and-Git/
 ---
 
 ### 9. docs/en/quick-start.md
+
 **Purpose**: Fast-track guide for experienced users  
 **Target Audience**: Experienced IBM i developers  
 **Estimated Length**: 100-150 lines
 
 **Content Outline**:
+
 1. **Introduction**
    - Who this guide is for
    - What's covered
@@ -421,6 +440,7 @@ Kickstart-Bob-and-Git/
    - Required access levels
 
 3. **Setup Commands (Copy-Paste Ready)**
+
    ```bash
    # IFS directories
    mkdir -p /home/youruser/sources
@@ -465,6 +485,7 @@ Kickstart-Bob-and-Git/
 ## Integration with Existing Documentation
 
 ### Keep As-Is
+
 1. **`docs/nl/IBM_Bob-Installatie-documentatie.md`**
    - Well-structured Dutch installation guide
    - Complements English documentation
@@ -486,6 +507,7 @@ Kickstart-Bob-and-Git/
    - Update links to point to new structure
 
 ### Update
+
 1. **`README.md`**
    - Transform into bilingual navigation hub
    - Add clear structure overview
@@ -497,17 +519,20 @@ Kickstart-Bob-and-Git/
 ## Navigation Strategy
 
 ### Cross-Document Linking
+
 - Each document ends with "Next Steps" section
 - Links use relative paths: `[text](../path/to/file.md)`
 - Breadcrumb navigation at top of each doc
 - Back to README link in each document
 
 ### Language Navigation
+
 - README provides clear language selection
 - Each language section is self-contained
 - Cross-language references where appropriate (e.g., English docs can reference comprehensive Dutch Git guide)
 
 ### Progressive Disclosure
+
 - Quick start for experienced users
 - Detailed guides for step-by-step learning
 - Troubleshooting for problem-solving
@@ -518,12 +543,14 @@ Kickstart-Bob-and-Git/
 ## File Naming Conventions
 
 ### English Documentation
+
 - Numbered prefixes for sequential guides: `01-`, `02-`, etc.
 - Descriptive names: `prerequisites`, `ibm-i-setup`
 - Lowercase with hyphens: `github-integration.md`
 - Special docs without numbers: `troubleshooting.md`, `quick-start.md`
 
 ### Dutch Documentation
+
 - Keep existing names for continuity
 - Maintain current naming style
 
@@ -532,24 +559,28 @@ Kickstart-Bob-and-Git/
 ## Implementation Phases
 
 ### Phase 1: Structure Setup
+
 1. Create `docs/` directory
 2. Create `docs/en/` and `docs/nl/` subdirectories
 3. Move existing Dutch docs to `docs/nl/`
 4. Update all internal links in moved files
 
 ### Phase 2: Content Creation
+
 1. Create new English documentation files
 2. Extract and organize content from Kickstart Guide
 3. Write new sections as needed
 4. Add cross-references between documents
 
 ### Phase 3: Navigation & Polish
+
 1. Update main README.md
 2. Add navigation elements to all docs
 3. Update Online Documentation.md links
 4. Review all cross-references
 
 ### Phase 4: Validation
+
 1. Test all links
 2. Verify content completeness
 3. Check for consistency
@@ -560,18 +591,21 @@ Kickstart-Bob-and-Git/
 ## Success Criteria
 
 ### User Experience
+
 - ✅ Users can find information in < 2 clicks from README
 - ✅ Each document has single, clear purpose
 - ✅ Progressive learning path is obvious
 - ✅ Troubleshooting is easily accessible
 
 ### Technical Quality
+
 - ✅ All links work correctly
 - ✅ Code examples are tested and accurate
 - ✅ Commands include expected output
 - ✅ Screenshots/diagrams where helpful
 
 ### Maintainability
+
 - ✅ Clear separation of concerns
 - ✅ Easy to update individual sections
 - ✅ Consistent formatting throughout
@@ -582,12 +616,14 @@ Kickstart-Bob-and-Git/
 ## Maintenance Guidelines
 
 ### When to Update
+
 - IBM i version changes
 - IBM Bob feature updates
 - Tool version updates (Git, migrate, etc.)
 - User feedback on unclear sections
 
 ### How to Update
+
 1. Identify affected document(s)
 2. Update content in focused file
 3. Check cross-references
@@ -595,6 +631,7 @@ Kickstart-Bob-and-Git/
 5. Test all related links
 
 ### Review Schedule
+
 - Quarterly review of all documentation
 - Immediate updates for breaking changes
 - User feedback incorporated monthly
@@ -604,6 +641,7 @@ Kickstart-Bob-and-Git/
 ## Conclusion
 
 This structure provides:
+
 - **Modularity**: Easy to update individual topics
 - **Clarity**: Each document has single purpose
 - **Accessibility**: Multiple entry points for different users

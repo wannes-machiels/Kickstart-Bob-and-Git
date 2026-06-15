@@ -9,6 +9,7 @@
 This guide shows you how to access your IBM i IFS sources from your workstation via network shares. This allows you to edit files using modern IDEs like VS Code while the files remain on the IBM i system.
 
 **What You'll Configure:**
+
 - IBM i NetServer for file sharing
 - Network share for your sources directory
 - Workstation access (Windows, macOS, or Linux)
@@ -37,7 +38,7 @@ NetServer provides SMB/CIFS file sharing from IBM i.
 
 From a 5250 session:
 
-```
+```bash
 WRKACTJOB SBS(QSYSWRK)
 ```
 
@@ -47,18 +48,19 @@ Look for `QZLSSERVER` jobs. If running, NetServer is active.
 
 If NetServer is not running:
 
-```
+```bash
 STRTCPSVR SERVER(*NETSVR)
 ```
 
 **Expected Message**:
-```
+
+```bash
 TCP/IP server NETSVR starting in subsystem QSYSWRK
 ```
 
 ### Verify NetServer Started
 
-```
+```bash
 NETSTAT *CNN
 ```
 
@@ -66,7 +68,7 @@ Look for connections on port 445 (SMB).
 
 ### Configure NetServer to Start Automatically
 
-```
+```bash
 CHGNTSVRA AUTOSTART(*YES)
 ```
 
@@ -79,7 +81,8 @@ You can create shares using either the command line or IBM i Navigator.
 ### Method 1: Using IBM i Navigator (Recommended)
 
 1. Open IBM i Navigator in a web browser:
-   ```
+
+   ```bash
    http://your-ibmi-system:2001
    ```
 
@@ -104,13 +107,13 @@ You can create shares using either the command line or IBM i Navigator.
 
 From a 5250 session:
 
-```
+```bash
 CHGNFSEXP OPTIONS('-i -o rw') DIR('/home/youruser/sources')
 ```
 
 Or create a share using QNTC:
 
-```
+```bash
 MKDIR DIR('/QNTC/YOURSYSTEM/SOURCES')
 ADDLNK OBJ('/home/youruser/sources') NEWLNK('/QNTC/YOURSYSTEM/SOURCES')
 ```
@@ -118,11 +121,13 @@ ADDLNK OBJ('/home/youruser/sources') NEWLNK('/QNTC/YOURSYSTEM/SOURCES')
 ### Verify Share Creation
 
 From IBM i Navigator:
+
 - Go to **NetServer** → **Shares**
 - Verify your share appears in the list
 
 From command line:
-```
+
+```bash
 WRKLNK OBJ('/QNTC/*')
 ```
 
@@ -135,9 +140,11 @@ WRKLNK OBJ('/QNTC/*')
 1. Open **File Explorer**
 
 2. In the address bar, type:
-   ```
+
+   ```bash
    \\your-ibmi-system\SOURCES
    ```
+
    Replace `your-ibmi-system` with your IBM i hostname or IP address
 
 3. Press **Enter**
@@ -200,7 +207,8 @@ Get-ChildItem Z:\
 2. Press **Cmd+K** or select **Go** → **Connect to Server**
 
 3. Enter the server address:
-   ```
+
+   ```bash
    smb://your-ibmi-system/SOURCES
    ```
 
@@ -252,17 +260,20 @@ umount ~/mnt/ibmi-sources
 ### Install Required Packages
 
 **Debian/Ubuntu:**
+
 ```bash
 sudo apt-get update
 sudo apt-get install cifs-utils
 ```
 
 **RHEL/CentOS/Fedora:**
+
 ```bash
 sudo yum install cifs-utils
 ```
 
 **Arch Linux:**
+
 ```bash
 sudo pacman -S cifs-utils
 ```
@@ -276,6 +287,7 @@ sudo mkdir -p /mnt/ibmi-sources
 ### Mount the Share
 
 **Temporary mount:**
+
 ```bash
 sudo mount -t cifs //your-ibmi-system/SOURCES /mnt/ibmi-sources -o username=youruser
 ```
@@ -283,6 +295,7 @@ sudo mount -t cifs //your-ibmi-system/SOURCES /mnt/ibmi-sources -o username=your
 You'll be prompted for your password.
 
 **Mount with credentials in command:**
+
 ```bash
 sudo mount -t cifs //your-ibmi-system/SOURCES /mnt/ibmi-sources -o username=youruser,password=yourpassword
 ```
@@ -292,37 +305,44 @@ sudo mount -t cifs //your-ibmi-system/SOURCES /mnt/ibmi-sources -o username=your
 ### Permanent Mount (fstab)
 
 1. Create a credentials file:
+
    ```bash
    sudo nano /etc/smbcredentials
    ```
 
 2. Add your credentials:
-   ```
+
+   ```bash
    username=youruser
    password=yourpassword
    ```
 
 3. Secure the file:
+
    ```bash
    sudo chmod 600 /etc/smbcredentials
    ```
 
 4. Edit fstab:
+
    ```bash
    sudo nano /etc/fstab
    ```
 
 5. Add this line:
-   ```
+
+   ```bash
    //your-ibmi-system/SOURCES /mnt/ibmi-sources cifs credentials=/etc/smbcredentials,uid=1000,gid=1000 0 0
    ```
 
 6. Test the mount:
+
    ```bash
    sudo mount -a
    ```
 
 7. Verify:
+
    ```bash
    ls -la /mnt/ibmi-sources
    ```
@@ -340,18 +360,21 @@ sudo umount /mnt/ibmi-sources
 ### Open Network Share in VS Code
 
 **Windows:**
+
 1. Open VS Code
 2. File → Open Folder
 3. Navigate to `Z:\` (your mapped drive)
 4. Select the folder and click **Select Folder**
 
 **macOS:**
+
 1. Open VS Code
 2. File → Open Folder
 3. Navigate to `/Volumes/SOURCES`
 4. Select the folder and click **Open**
 
 **Linux:**
+
 1. Open VS Code
 2. File → Open Folder
 3. Navigate to `/mnt/ibmi-sources`
@@ -366,6 +389,7 @@ sudo umount /mnt/ibmi-sources
 3. Save the file (**Ctrl+S** or **Cmd+S**)
 
 4. Verify the change on IBM i:
+
    ```bash
    ssh youruser@your-ibmi-system
    cat /home/youruser/sources/QRPGLESRC/PROGRAM1.rpgle
@@ -380,12 +404,14 @@ sudo umount /mnt/ibmi-sources
 **Windows Error**: "Network path not found"
 
 **Solutions**:
+
 1. Verify NetServer is running on IBM i
 2. Check firewall settings (port 445 must be open)
 3. Try using IP address instead of hostname
 4. Verify share name is correct
 
 **Test connectivity**:
+
 ```powershell
 Test-NetConnection -ComputerName your-ibmi-system -Port 445
 ```
@@ -395,6 +421,7 @@ Test-NetConnection -ComputerName your-ibmi-system -Port 445
 **Error**: "Logon failure: unknown user name or bad password"
 
 **Solutions**:
+
 1. Verify username and password are correct
 2. Check if user profile is enabled on IBM i
 3. Verify user has authority to the shared directory
@@ -405,12 +432,15 @@ Test-NetConnection -ComputerName your-ibmi-system -Port 445
 **Error**: "Access is denied" or "Permission denied"
 
 **Solutions**:
+
 1. Check directory permissions on IBM i:
+
    ```bash
    ls -la /home/youruser/sources
    ```
 
 2. Fix permissions:
+
    ```bash
    chmod 755 /home/youruser/sources
    ```
@@ -422,6 +452,7 @@ Test-NetConnection -ComputerName your-ibmi-system -Port 445
 **Problem**: Share doesn't appear in network browser
 
 **Solutions**:
+
 1. Access directly using full path
 2. Verify NetServer is running
 3. Check network discovery settings (Windows)
@@ -432,6 +463,7 @@ Test-NetConnection -ComputerName your-ibmi-system -Port 445
 **Problem**: File access is slow
 
 **Solutions**:
+
 1. Check network connectivity and bandwidth
 2. Reduce number of open files in VS Code
 3. Exclude large directories from VS Code search
@@ -470,12 +502,14 @@ Test-NetConnection -ComputerName your-ibmi-system -Port 445
 For better performance and security, consider using VS Code's Remote-SSH extension instead of network shares:
 
 **Advantages**:
+
 - Faster performance
 - More secure (SSH encryption)
 - Works over any network
 - Better for slow connections
 
 **Setup**:
+
 1. Install "Remote - SSH" extension in VS Code
 2. Connect to IBM i via SSH
 3. Open folders directly on IBM i

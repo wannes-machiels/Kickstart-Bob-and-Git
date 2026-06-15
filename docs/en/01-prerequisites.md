@@ -28,8 +28,9 @@ You will need the following access to your IBM i system:
 ### Internet Connectivity
 
 Your IBM i system must have:
+
 - Active internet connection for downloading packages and cloning repositories
-- Access to GitHub (https://github.com)
+- Access to [GitHub](https://github.com)
 - Access to IBM's open source package repositories
 
 ### IBM i Version
@@ -38,6 +39,7 @@ Your IBM i system must have:
 - **Recommended**: IBM i 7.4 or higher for best compatibility
 
 **Verify your IBM i version:**
+
 ```bash
 # From a 5250 session or SSH terminal
 DSPSFWRSC
@@ -50,45 +52,49 @@ DSPSFWRSC
 ### Operating System Compatibility
 
 This guide supports the following operating systems:
+
 - **Windows**: Windows 10 or higher
 - **macOS**: macOS 10.14 (Mojave) or higher
 - **Linux**: Most modern distributions (Ubuntu, Fedora, RHEL, etc.)
 
 ### Required Software
 
-#### 1. Visual Studio Code
+#### 1. IBM Bob
 
-IBM Bob runs as a VS Code extension.
+IBM Bob is based on VS Code.
 
 **Installation:**
-- Download from [https://code.visualstudio.com/](https://code.visualstudio.com/)
+
+- Download [IBM Bob](https://bob.ibm.com/)
 - Follow the installation wizard for your operating system
 
 **Verify installation:**
-```bash
-code --version
-```
+Check if IBM Bob is installed and accessible
 
 #### 2. Git
 
 Git is required for version control operations.
 
 **Windows:**
+
 ```bash
 winget install Git.Git
 ```
 
 **macOS:**
+
 ```bash
 brew install git
 ```
 
 **Linux (Debian/Ubuntu):**
+
 ```bash
 sudo apt-get install git
 ```
 
 **Verify installation:**
+
 ```bash
 git --version
 ```
@@ -97,25 +103,33 @@ Expected output: `git version 2.x.x` or higher
 
 #### 3. Node.js (LTS Version)
 
-Required for IBM Bob extension.
+Not required for IBM Bob or Git.
+
+**Installation:**
+
+Download the installer directly from [nodejs.org](https://nodejs.org/en/download/) or install via command line:
 
 **Windows:**
+
 ```bash
 winget install -e --id OpenJS.NodeJS.LTS
 ```
 
 **macOS:**
+
 ```bash
 brew install node@lts
 ```
 
 **Linux (Debian/Ubuntu):**
+
 ```bash
 curl -fsSL https://deb.nodesource.com/setup_lts.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
 
 **Verify installation:**
+
 ```bash
 node --version
 npm --version
@@ -126,12 +140,14 @@ Expected output: Node.js v18.x.x or higher
 ### Network Access Requirements
 
 Ensure your workstation can:
+
 - Access your IBM i system via IP address or hostname
 - Connect to port 22 (SSH) on the IBM i system
 - Connect to port 8472 (Code for IBM i default port)
 - Access NetServer shares (port 445 for SMB/CIFS)
 
 **Test connectivity:**
+
 ```bash
 # Test SSH connection
 ssh youruser@your-ibmi-system
@@ -147,19 +163,22 @@ ping your-ibmi-system
 Use this checklist to ensure all prerequisites are met:
 
 ### IBM i System
+
 - [ ] IBM i version 7.3 or higher
 - [ ] User profile with appropriate authorities
 - [ ] Internet connectivity verified
 - [ ] Can access 5250 session or SSH terminal
 
 ### Workstation
-- [ ] Visual Studio Code installed and working
+
+- [ ] IBM Bob installed and working
 - [ ] Git installed (version 2.x or higher)
-- [ ] Node.js installed (LTS version)
+- [ ] Node.js installed (LTS version) (optional)
 - [ ] Can connect to IBM i system via SSH
 - [ ] Can ping IBM i system
 
 ### Accounts
+
 - [ ] IBM account created (for IBM Bob login)
 - [ ] GitHub account created (or ready to create)
 
@@ -209,22 +228,26 @@ ping github.com
 ## What If Something Is Missing?
 
 ### Git Not Installed
+
 - **Windows**: Use `winget install Git.Git` or download from [git-scm.com](https://git-scm.com)
 - **macOS**: Install via Homebrew or download from [git-scm.com](https://git-scm.com)
 - **Linux**: Use your distribution's package manager
 
 ### Node.js Not Installed
+
 - **Windows**: Use `winget install -e --id OpenJS.NodeJS.LTS`
 - **macOS**: Use Homebrew: `brew install node@lts`
 - **Linux**: Follow instructions at [nodejs.org](https://nodejs.org)
 
 ### Cannot Connect to IBM i
+
 - Verify the hostname or IP address is correct
 - Check firewall settings on both workstation and IBM i
 - Verify SSH service is running on IBM i: `NETSTAT *CNN`
 - Contact your system administrator for network access
 
 ### Insufficient IBM i Permissions
+
 - Contact your IBM i system administrator
 - Request the necessary authorities listed above
 - Explain you need to set up source code management on the IFS
@@ -245,7 +268,7 @@ Once all prerequisites are verified:
 - [IBM i Access Client Solutions](https://www.ibm.com/support/pages/ibm-i-access-client-solutions)
 - [Git Documentation](https://git-scm.com/doc)
 - [Node.js Documentation](https://nodejs.org/docs/)
-- [VS Code Documentation](https://code.visualstudio.com/docs)
+- [IBM Bob Documentation](https://bob.ibm.com/docs/ide)
 
 ---
 

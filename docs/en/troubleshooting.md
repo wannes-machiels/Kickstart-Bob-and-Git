@@ -9,6 +9,7 @@
 This guide provides solutions to common issues you may encounter while setting up and using IBM Bob with IBM i. Issues are organized by category for easy navigation.
 
 **Quick Links:**
+
 - [Git Issues](#git-issues)
 - [IBM i Setup Issues](#ibm-i-setup-issues)
 - [Migration Issues](#migration-issues)
@@ -28,6 +29,7 @@ This guide provides solutions to common issues you may encounter while setting u
 **Cause**: No internet connectivity or DNS issues
 
 **Solutions**:
+
 ```bash
 # Test internet connectivity
 ping github.com
@@ -46,6 +48,7 @@ nslookup github.com
 **Cause**: Insufficient permissions to create directories
 
 **Solutions**:
+
 ```bash
 # Check current directory permissions
 ls -la
@@ -63,6 +66,7 @@ mkdir -m 755 /home/youruser/migrate
 **Cause**: Missing or outdated SSL certificates
 
 **Solutions**:
+
 ```bash
 # Install/update CA certificates
 yum install ca-certificates-mozilla
@@ -90,6 +94,7 @@ git config --global http.sslCAInfo /path/to/ca-bundle.crt
    - Use token as password when pushing
 
 2. **Configure credential helper**:
+
    ```bash
    # Cache credentials for 1 hour
    git config --global credential.helper 'cache --timeout=3600'
@@ -99,6 +104,7 @@ git config --global http.sslCAInfo /path/to/ca-bundle.crt
    ```
 
 3. **Use SSH instead**:
+
    ```bash
    # Generate SSH key
    ssh-keygen -t ed25519 -C "your.email@company.com"
@@ -119,6 +125,7 @@ git config --global http.sslCAInfo /path/to/ca-bundle.crt
 **Cause**: Remote has changes you don't have locally
 
 **Solutions**:
+
 ```bash
 # Pull latest changes first
 git pull origin main
@@ -141,7 +148,8 @@ git push
 **Solutions**:
 
 1. **Open the conflicted file**:
-   ```
+
+   ```bash
    <<<<<<< HEAD
    Your local changes
    =======
@@ -150,11 +158,13 @@ git push
    ```
 
 2. **Resolve the conflict**:
+
    - Choose which version to keep
    - Or combine both versions
    - Remove conflict markers (`<<<<<<<`, `=======`, `>>>>>>>`)
 
 3. **Complete the merge**:
+
    ```bash
    git add file.rpgle
    git commit -m "Resolve merge conflict in file.rpgle"
@@ -172,6 +182,7 @@ git push
 **Cause**: make-gnu package not installed
 
 **Solutions**:
+
 ```bash
 # Install make-gnu
 yum install make-gnu
@@ -196,6 +207,7 @@ source ~/.profile
 **Cause**: Open source environment not initialized
 
 **Solutions**:
+
 ```bash
 # Add to PATH
 export PATH=/QOpenSys/pkgs/bin:$PATH
@@ -216,6 +228,7 @@ echo 'export PATH=/QOpenSys/pkgs/bin:$PATH' >> ~/.profile
 **Cause**: No internet connection or proxy issues
 
 **Solutions**:
+
 ```bash
 # Test internet connectivity
 ping 8.8.8.8
@@ -239,6 +252,7 @@ echo 'export http_proxy=http://proxy.company.com:8080' >> ~/.profile
 **Cause**: Not enough disk space
 
 **Solutions**:
+
 ```bash
 # Check available space
 df -h /QOpenSys/pkgs
@@ -263,6 +277,7 @@ yum autoremove
 **Solutions**:
 
 1. **Check your authorities**:
+
    ```bash
    # From 5250
    DSPUSRPRF USRPRF(YOURUSER)
@@ -274,6 +289,7 @@ yum autoremove
    - Request specific directory permissions
 
 3. **Alternative**: Have administrator create directories:
+
    ```bash
    # Administrator creates directories
    mkdir -p /home/youruser/sources
@@ -299,6 +315,7 @@ yum autoremove
 **Cause**: GCC compiler not installed
 
 **Solutions**:
+
 ```bash
 # Install GCC
 yum install gcc
@@ -318,6 +335,7 @@ gmake
 **Cause**: Wrong directory or missing Makefile
 
 **Solutions**:
+
 ```bash
 # Verify you're in the correct directory
 pwd
@@ -341,6 +359,7 @@ git clone https://github.com/worksofliam/migrate.git
 **Causes and Solutions**:
 
 1. **Wrong library name**:
+
    ```bash
    # Verify library exists
    system "DSPLIB LIB(YOURLIB)"
@@ -349,6 +368,7 @@ git clone https://github.com/worksofliam/migrate.git
    ```
 
 2. **No source physical files**:
+
    ```bash
    # List files in library
    system "DSPFD FILE(YOURLIB/*ALL) TYPE(*FILE)"
@@ -357,6 +377,7 @@ git clone https://github.com/worksofliam/migrate.git
    ```
 
 3. **No members in source files**:
+
    ```bash
    # Check for members
    system "DSPPFM FILE(YOURLIB/QRPGLESRC)"
@@ -365,6 +386,7 @@ git clone https://github.com/worksofliam/migrate.git
    ```
 
 4. **Permission issues**:
+
    ```bash
    # Check authority to source files
    system "DSPOBJAUT OBJ(YOURLIB/QRPGLESRC) OBJTYPE(*FILE)"
@@ -379,6 +401,7 @@ git clone https://github.com/worksofliam/migrate.git
 **Cause**: Character encoding mismatch
 
 **Solutions**:
+
 ```bash
 # Check current locale
 locale
@@ -406,12 +429,14 @@ echo 'export LANG=en_US.UTF-8' >> ~/.profile
 **Solutions**:
 
 1. **Manually rename files**:
+
    ```bash
    cd /home/youruser/sources/QRPGLESRC
    for f in *.txt; do mv "$f" "${f%.txt}.rpgle"; done
    ```
 
 2. **Check source file attributes**:
+
    ```bash
    # From 5250
    DSPFD FILE(YOURLIB/QRPGLESRC)
@@ -419,6 +444,7 @@ echo 'export LANG=en_US.UTF-8' >> ~/.profile
    ```
 
 3. **Use specific source file type**:
+
    ```bash
    # Migrate with explicit type
    ./migrate -l YOURLIB -f QRPGLESRC -t RPGLE -d /home/youruser/sources
@@ -435,6 +461,7 @@ echo 'export LANG=en_US.UTF-8' >> ~/.profile
 **Cause**: NetServer service not started
 
 **Solutions**:
+
 ```bash
 # From 5250 session
 STRTCPSVR SERVER(*NETSVR)
@@ -456,6 +483,7 @@ CHGNTSVRA AUTOSTART(*YES)
 **Solutions**:
 
 1. **Test connectivity**:
+
    ```powershell
    # Test ping
    ping your-ibmi-system
@@ -465,7 +493,8 @@ CHGNTSVRA AUTOSTART(*YES)
    ```
 
 2. **Try IP address instead of hostname**:
-   ```
+
+   ```bash
    \\<ip-address>\SOURCES
    ```
 
@@ -475,6 +504,7 @@ CHGNTSVRA AUTOSTART(*YES)
    - Check IBM i firewall settings
 
 4. **Verify share exists**:
+
    ```bash
    # From IBM i
    WRKLNK OBJ('/QNTC/*')
@@ -487,16 +517,19 @@ CHGNTSVRA AUTOSTART(*YES)
 **Solutions**:
 
 1. **Use correct protocol**:
-   ```
+
+   ```bash
    smb://your-ibmi-system/SOURCES
    ```
 
 2. **Try with credentials in URL**:
-   ```
+
+   ```bash
    smb://username@your-ibmi-system/SOURCES
    ```
 
 3. **Check Finder preferences**:
+
    - Finder → Preferences → General
    - Ensure "Connected servers" is checked
 
@@ -507,18 +540,21 @@ CHGNTSVRA AUTOSTART(*YES)
 **Solutions**:
 
 1. **Install cifs-utils**:
+
    ```bash
    sudo apt-get install cifs-utils  # Debian/Ubuntu
    sudo yum install cifs-utils      # RHEL/CentOS
    ```
 
 2. **Use correct mount options**:
+
    ```bash
    sudo mount -t cifs //ibmi-system/SOURCES /mnt/ibmi \
      -o username=youruser,vers=3.0
    ```
 
 3. **Check SELinux** (if applicable):
+
    ```bash
    # Temporarily disable
    sudo setenforce 0
@@ -536,12 +572,14 @@ CHGNTSVRA AUTOSTART(*YES)
 **Solutions**:
 
 1. **Verify credentials**:
+
    ```bash
    # Test SSH login
    ssh youruser@your-ibmi-system
    ```
 
 2. **Check user profile status**:
+
    ```bash
    # From 5250
    DSPUSRPRF USRPRF(YOURUSER)
@@ -549,13 +587,15 @@ CHGNTSVRA AUTOSTART(*YES)
    ```
 
 3. **Try different username formats**:
-   ```
+
+   ```bash
    youruser
    YOURUSER
    domain\youruser
    ```
 
 4. **Reset password if needed**:
+
    ```bash
    # From 5250 (requires authority)
    CHGUSRPRF USRPRF(YOURUSER) PASSWORD(newpassword)
@@ -570,12 +610,14 @@ CHGNTSVRA AUTOSTART(*YES)
 **Solutions**:
 
 1. **Ensure persistent connection**:
+
    ```powershell
    # Windows
    net use Z: \\ibmi-system\SOURCES /persistent:yes
    ```
 
 2. **Adjust timeout settings**:
+
    ```powershell
    # Increase SMB timeout
    Set-SmbClientConfiguration -SessionTimeout 300
@@ -597,6 +639,7 @@ CHGNTSVRA AUTOSTART(*YES)
 **Solutions**:
 
 1. **Verify SSH service**:
+
    ```bash
    # From 5250
    NETSTAT *CNN
@@ -604,6 +647,7 @@ CHGNTSVRA AUTOSTART(*YES)
    ```
 
 2. **Test SSH manually**:
+
    ```bash
    ssh youruser@your-ibmi-system
    ```
@@ -631,6 +675,7 @@ CHGNTSVRA AUTOSTART(*YES)
    - Try signing out and back in
 
 2. **Check internet connection**:
+
    ```bash
    ping ibm.com
    ```
@@ -657,14 +702,16 @@ CHGNTSVRA AUTOSTART(*YES)
 **Solutions**:
 
 1. **Provide more context**:
-   ```
+
+   ```bash
    Instead of: "Fix this code"
    Try: "This RPG ILE program reads CUSTFILE and should calculate totals. 
          It's giving wrong results. Here's the code: [paste code]"
    ```
 
 2. **Be specific about your environment**:
-   ```
+
+   ```bash
    "I'm working on IBM i 7.4 with RPG ILE free format.
     I need to read a database file and create a report."
    ```
@@ -711,6 +758,7 @@ CHGNTSVRA AUTOSTART(*YES)
 **Cause**: Missing data area or library not in library list
 
 **Solutions**:
+
 ```bash
 # Add library to library list
 # In Code for IBM i settings, add the library
@@ -726,6 +774,7 @@ CRTDTAARA DTAARA(YOURLIB/DATAAREA) TYPE(*CHAR) LEN(100)
 **Cause**: Database file not found or not in library list
 
 **Solutions**:
+
 ```bash
 # Verify file exists
 WRKOBJ OBJ(YOURLIB/CUSTFILE) OBJTYPE(*FILE)
@@ -810,7 +859,6 @@ If you've tried the solutions in this guide and still have problems:
 4. **Contact support**:
    - For IBM i issues: Your system administrator
    - For IBM Bob issues: IBM Bob support
-   - For VS Code issues: VS Code support
 
 ---
 

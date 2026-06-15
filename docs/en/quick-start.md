@@ -28,6 +28,7 @@ Before starting, verify you have:
 - [ ] GitHub account
 
 **Quick Verification**:
+
 ```bash
 # On workstation
 code --version && git --version && node --version
@@ -148,6 +149,7 @@ git push -u origin main
 ```
 
 **Authentication**: Use Personal Access Token (not password)
+
 - GitHub → Settings → Developer settings → Personal access tokens
 - Generate token with `repo` scope
 - Use token as password when pushing
@@ -176,18 +178,21 @@ CHGNTSVRA AUTOSTART(*YES)
 ### Connect from Workstation
 
 **Windows**:
-```
+
+```bash
 \\your-ibmi-system\SOURCES
 Map as Z: drive
 ```
 
 **macOS**:
-```
+
+```bash
 smb://your-ibmi-system/SOURCES
 Cmd+K in Finder
 ```
 
 **Linux**:
+
 ```bash
 sudo mount -t cifs //your-ibmi-system/SOURCES /mnt/ibmi-sources -o username=youruser
 ```
@@ -322,7 +327,7 @@ cat file.rpgle              # View file
 
 ### VS Code Shortcuts
 
-```
+```bash
 Ctrl+Shift+P    # Command palette
 Ctrl+`          # Toggle terminal
 Ctrl+B          # Toggle sidebar
@@ -335,29 +340,34 @@ Ctrl+Shift+F    # Search in files
 ## Troubleshooting Quick Fixes
 
 ### Git push fails
+
 ```bash
 # Use Personal Access Token, not password
 # GitHub → Settings → Developer settings → Tokens
 ```
 
 ### gmake not found
+
 ```bash
 yum install make-gnu
 ```
 
 ### Cannot connect to network share
+
 ```bash
 # Verify NetServer is running
 STRTCPSVR SERVER(*NETSVR)
 ```
 
 ### Compilation fails
+
 ```bash
 # Check library list in Code for IBM i settings
 # Verify current library is set
 ```
 
 ### IBM Bob not responding
+
 ```bash
 # Sign out and back in
 # Check internet connection
@@ -377,7 +387,7 @@ STRTCPSVR SERVER(*NETSVR)
 
 ### Explore IBM Bob Features
 
-```
+```bash
 # Try these prompts with IBM Bob:
 
 "Generate an RPG ILE program that reads CUSTFILE and creates a report"
@@ -406,16 +416,19 @@ STRTCPSVR SERVER(*NETSVR)
 ## Resources
 
 ### Documentation
+
 - [IBM Bob Docs](https://bob.ibm.com/docs)
 - [Code for IBM i Docs](https://codefori.github.io/docs/)
 - [Git Documentation](https://git-scm.com/doc)
 
 ### Community
+
 - [IBM Community](https://community.ibm.com/)
 - [Code for IBM i Discord](https://discord.gg/codeforibmi)
 - [Stack Overflow](https://stackoverflow.com/questions/tagged/ibm-midrange)
 
 ### Support
+
 - [IBM Bob Support](https://bob.ibm.com/support)
 - [GitHub Help](https://docs.github.com/)
 
@@ -424,6 +437,7 @@ STRTCPSVR SERVER(*NETSVR)
 ## Congratulations! 🎉
 
 You're now set up with:
+
 - ✅ Source code on IFS
 - ✅ Git version control
 - ✅ GitHub integration

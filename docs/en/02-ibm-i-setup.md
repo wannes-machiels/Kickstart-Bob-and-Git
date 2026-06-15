@@ -9,6 +9,7 @@
 This guide walks you through configuring your IBM i system for modern source code management. You'll create IFS directories, verify open source tools, and install any missing packages.
 
 **What You'll Configure:**
+
 - IFS directories for source code and tools
 - Open source package environment
 - Required development tools (Git, make-gnu, bash)
@@ -20,6 +21,7 @@ This guide walks you through configuring your IBM i system for modern source cod
 ## Step 1: Create IFS Directories
 
 You need two main directories on the IFS:
+
 1. **Sources directory**: Where your migrated source code will live
 2. **Migrate directory**: Where the migration tool will be installed
 
@@ -51,7 +53,7 @@ ls -la /home/youruser/
 
 ### Recommended Directory Structure
 
-```
+```bash
 /home/youruser/
 ├── sources/          # Your source code (Git repository)
 │   ├── QRPGLESRC/   # RPG source files
@@ -87,7 +89,8 @@ IBM i includes an open source ecosystem. You need to verify which tools are alre
 ### Method 1: Using Navigator for i (Recommended)
 
 1. Open a web browser and navigate to your IBM i Navigator for i:
-   ```
+
+   ```bash
    http://your-ibmi-system:2001
    ```
 
@@ -123,7 +126,7 @@ yum list installed | grep bash
 ### Required Package Versions
 
 | Package | Minimum Version | Purpose |
-|---------|----------------|---------|
+| --------- | ---------------- | --------- |
 | `git` | 2.x or higher | Version control |
 | `make-gnu` | 4.x or higher | Building migrate tool |
 | `bash` | 4.x or higher | Shell scripting |
@@ -235,6 +238,7 @@ rm -rf git-reference
 ```
 
 If any of these fail, check:
+
 - Firewall settings
 - Proxy configuration
 - DNS settings
@@ -272,6 +276,7 @@ export PATH=/QOpenSys/pkgs/bin:$PATH
 ```
 
 To make permanent, add to your profile:
+
 ```bash
 echo 'export PATH=/QOpenSys/pkgs/bin:$PATH' >> ~/.profile
 ```
@@ -279,6 +284,7 @@ echo 'export PATH=/QOpenSys/pkgs/bin:$PATH' >> ~/.profile
 ### "Permission denied" When Creating Directories
 
 You may lack authority. Options:
+
 1. Ask your system administrator to create the directories
 2. Request `*ALLOBJ` special authority
 3. Have administrator grant specific directory permissions
@@ -286,6 +292,7 @@ You may lack authority. Options:
 ### Package Installation Fails
 
 Common causes:
+
 - **No internet connection**: Verify connectivity
 - **Proxy required**: Configure yum proxy settings
 - **Disk space**: Check available space with `df -h`
@@ -307,7 +314,7 @@ yum install ca-certificates-mozilla
 
 ### Directory Organization
 
-```
+```bash
 /home/youruser/
 ├── sources/              # Active development
 │   └── myproject/       # Git repository

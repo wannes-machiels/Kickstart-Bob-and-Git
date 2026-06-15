@@ -9,7 +9,8 @@
 This guide walks you through installing and configuring IBM Bob in Visual Studio Code. IBM Bob is an AI-powered development assistant specifically designed for IBM i development.
 
 **What You'll Do:**
-- Install IBM Bob extension in VS Code
+
+- Install IBM Bob
 - Connect to your IBM i system
 - Configure source directories and library lists
 - Verify the complete setup
@@ -22,6 +23,7 @@ This guide walks you through installing and configuring IBM Bob in Visual Studio
 ## What is IBM Bob?
 
 IBM Bob is an AI assistant that helps with:
+
 - **Code Generation**: Generate RPG, CL, SQL, and other IBM i code
 - **Code Explanation**: Understand existing code
 - **Debugging**: Find and fix issues
@@ -36,27 +38,22 @@ IBM Bob is an AI assistant that helps with:
 ### Prerequisites
 
 Ensure you have:
-- ✅ Visual Studio Code installed
+
+- ✅ IBM Bob installed
 - ✅ IBM account (create at [ibm.com](https://www.ibm.com))
 - ✅ Internet connection
 
-### Install the Extension
+### IBM Bob
 
-1. Open **Visual Studio Code**
+IBM Bob is based on VS Code.
 
-2. Click the **Extensions** icon in the left sidebar (or press **Ctrl+Shift+X** / **Cmd+Shift+X**)
+**Installation:**
 
-3. Search for **"IBM Bob"**
+- Download [IBM Bob](https://bob.ibm.com/)
+- Follow the installation wizard for your operating system
 
-4. Click **Install** on the IBM Bob extension
-
-5. Wait for installation to complete
-
-6. You may need to reload VS Code
-
-### Verify Installation
-
-Look for the IBM Bob icon in the VS Code activity bar (left sidebar).
+**Verify installation:**
+Check if IBM Bob is installed and accessible
 
 ---
 
@@ -118,22 +115,26 @@ Look for the IBM i icon in the VS Code activity bar.
 3. Fill in the connection details:
 
    **Connection name**: Choose a descriptive name
-   ```
+
+   ```txt
    Example: "DEV System" or "Production IBM i"
    ```
 
    **Host or IP address**: Your IBM i system
-   ```
+
+   ```txt
    Example: <ip-address> or ibmi.company.com
    ```
 
    **Port**: SSH port (usually 22)
-   ```
+
+   ```txt
    Default: 22
    ```
 
    **Username**: Your IBM i user profile
-   ```
+
+   ```txt
    Example: YOURUSER
    ```
 
@@ -154,6 +155,7 @@ Look for the IBM i icon in the VS Code activity bar.
 ### Verify Connection
 
 When connected successfully, you'll see:
+
 - **User Library List** section appears
 - **IFS Browser** becomes available
 - Connection status shows as "Connected"
@@ -169,7 +171,8 @@ When connected successfully, you'll see:
 2. Look for **Source Directory** or **Working Directory** setting
 
 3. Set it to your sources path:
-   ```
+
+   ```txt
    /home/youruser/sources
    ```
 
@@ -182,7 +185,8 @@ When connected successfully, you'll see:
 2. Click **Edit** or **Configure**
 
 3. Add your development libraries:
-   ```
+
+   ```txt
    Example:
    - YOURLIB
    - QGPL
@@ -198,7 +202,8 @@ When connected successfully, you'll see:
 1. Find **Current Library** setting
 
 2. Set it to your working library:
-   ```
+
+   ```txt
    Example: YOURLIB
    ```
 
@@ -215,17 +220,20 @@ When connected successfully, you'll see:
 3. Configure compile settings:
 
    **For RPG Programs**:
-   ```
+
+   ```txt
    CRTBNDRPG PGM(&CURLIB/&NAME) SRCSTMF('&FULLPATH') OPTION(*EVENTF) DBGVIEW(*SOURCE)
    ```
 
    **For CL Programs**:
-   ```
+
+   ```txt
    CRTBNDCL PGM(&CURLIB/&NAME) SRCSTMF('&FULLPATH') OPTION(*EVENTF) DBGVIEW(*SOURCE)
    ```
 
    **For SQL RPG**:
-   ```
+
+   ```txt
    CRTSQLRPGI OBJ(&CURLIB/&NAME) SRCSTMF('&FULLPATH') COMMIT(*NONE) DBGVIEW(*SOURCE)
    ```
 
@@ -260,7 +268,8 @@ Tell Bob about your environment:
 1. Open IBM Bob chat
 
 2. Send a message like:
-   ```
+
+   ```txt
    I'm working on an IBM i system with RPG ILE programs.
    My source code is in /home/youruser/sources.
    I use library YOURLIB for development.
@@ -276,7 +285,7 @@ Tell Bob about your environment:
 
 Run through this verification checklist:
 
-- [ ] IBM Bob extension installed and authenticated
+- [ ] IBM Bob installed and authenticated
 - [ ] Code for IBM i extension installed
 - [ ] Connected to IBM i system
 - [ ] Can browse IFS directories
@@ -301,6 +310,7 @@ Run through this verification checklist:
    - Check for successful compilation
 
 4. **Commit to Git**:
+
    ```bash
    cd /home/youruser/sources
    git add .
@@ -321,7 +331,7 @@ Run through this verification checklist:
 
 Ask Bob to generate code:
 
-```
+```txt
 Generate an RPG ILE program that reads customer records from CUSTFILE
 and creates a report sorted by customer name.
 ```
@@ -330,7 +340,7 @@ and creates a report sorted by customer name.
 
 Select code and ask:
 
-```
+```txt
 Explain what this code does and suggest improvements.
 ```
 
@@ -338,7 +348,7 @@ Explain what this code does and suggest improvements.
 
 When you encounter an error:
 
-```
+```txt
 I'm getting error CPF2105 when running this program. Here's the code:
 [paste code]
 What's wrong and how do I fix it?
@@ -348,7 +358,7 @@ What's wrong and how do I fix it?
 
 Ask Bob to modernize legacy code:
 
-```
+```txt
 Convert this RPG/400 program to free-format RPG ILE with modern best practices.
 ```
 
@@ -356,7 +366,7 @@ Convert this RPG/400 program to free-format RPG ILE with modern best practices.
 
 Generate documentation:
 
-```
+```txt
 Create documentation for this program including:
 - Purpose
 - Parameters
@@ -378,7 +388,7 @@ Create documentation for this program including:
 
 ### Development Workflow
 
-```
+```txt
 1. Open source file in VS Code
 2. Make changes
 3. Ask Bob for review/suggestions
@@ -403,6 +413,7 @@ Create documentation for this program including:
 **Problem**: Connection fails or times out
 
 **Solutions**:
+
 1. Verify SSH is running on IBM i: `NETSTAT *CNN`
 2. Check firewall settings (port 22)
 3. Verify username and password
@@ -413,6 +424,7 @@ Create documentation for this program including:
 **Problem**: Compile command doesn't work
 
 **Solutions**:
+
 1. Verify library list is correct
 2. Check compile command syntax
 3. Ensure source file is saved
@@ -424,10 +436,11 @@ Create documentation for this program including:
 **Problem**: Bob doesn't answer or gives errors
 
 **Solutions**:
+
 1. Check internet connection
 2. Verify IBM account is authenticated
 3. Try signing out and back in
-4. Restart VS Code
+4. Restart IBM Bob
 5. Check IBM Bob service status
 
 ### Source Files Not Visible
@@ -435,6 +448,7 @@ Create documentation for this program including:
 **Problem**: Can't see source files in VS Code
 
 **Solutions**:
+
 1. Verify source directory path is correct
 2. Check file permissions on IBM i
 3. Refresh the IFS browser
@@ -472,6 +486,7 @@ Save project-specific settings:
 
 1. Create `.vscode/settings.json` in your project
 2. Add IBM i configuration:
+
    ```json
    {
      "code-for-ibmi.connectionSettings": {

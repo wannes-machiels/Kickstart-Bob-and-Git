@@ -53,18 +53,21 @@ Welcome to the IBM Bob & Git documentation. This repository contains comprehensi
 This documentation covers the complete setup process:
 
 ### IBM i System Configuration
+
 - Creating IFS directories for source code
 - Installing open source tools (Git, make-gnu, bash)
 - Configuring NetServer for file sharing
 - Setting up proper permissions and authorities
 
 ### Source Code Migration
+
 - Using the migrate tool to move source from libraries to IFS
 - Organizing source code in a modern directory structure
 - Handling special cases and encoding issues
 - Verifying successful migration
 
 ### Git & GitHub Integration
+
 - Creating GitHub accounts and repositories
 - Initializing Git in your source directory
 - Setting up authentication (Personal Access Tokens or SSH)
@@ -72,12 +75,14 @@ This documentation covers the complete setup process:
 - Best practices for commit messages and branching
 
 ### Network Access
+
 - Configuring network shares on IBM i
 - Connecting from Windows, macOS, and Linux
 - Mapping network drives for easy access
 - Troubleshooting connection issues
 
 ### IBM Bob Setup
+
 - Installing IBM Bob and Code for IBM i extensions
 - Connecting to your IBM i system
 - Configuring source directories and library lists
@@ -92,7 +97,7 @@ This documentation covers the complete setup process:
 
 Follow the step-by-step guides in order:
 
-```
+```bash
 Prerequisites → IBM i Setup → Source Migration → 
 GitHub Integration → Network Access → IBM Bob Configuration
 ```
@@ -112,18 +117,21 @@ Use the **[Quick Start Guide](docs/en/quick-start.md)** for a condensed setup pr
 Before you begin, ensure you have:
 
 ### IBM i System
+
 - IBM i version 7.3 or higher
 - User profile with appropriate authorities
 - Internet connectivity
 - SSH access
 
 ### Workstation
+
 - Visual Studio Code
 - Git (version 2.x or higher)
 - Node.js (LTS version)
 - Network access to IBM i system
 
 ### Accounts
+
 - IBM account (for IBM Bob)
 - GitHub account (for version control)
 
@@ -133,7 +141,7 @@ Before you begin, ensure you have:
 
 ## 🗂️ Repository Structure
 
-```
+```bash
 Kickstart-Bob-and-Git/
 ├── README.md                           # This file
 ├── docs/
@@ -161,21 +169,25 @@ Kickstart-Bob-and-Git/
 ## 🎓 Learning Path
 
 ### Phase 1: Setup (Day 1)
+
 1. Verify prerequisites
 2. Configure IBM i system
 3. Migrate source code to IFS
 
 ### Phase 2: Version Control (Day 1-2)
+
 1. Set up GitHub account and repository
 2. Initialize Git in source directory
 3. Make first commit and push
 
 ### Phase 3: Development Environment (Day 2)
+
 1. Configure network access
 2. Install and configure IBM Bob
 3. Verify complete setup
 
 ### Phase 4: Daily Development (Ongoing)
+
 1. Edit code in VS Code
 2. Compile and test on IBM i
 3. Commit changes to Git
@@ -199,18 +211,21 @@ Encountering issues? Check the **[Troubleshooting Guide](docs/en/troubleshooting
 ## 🌟 Key Features
 
 ### Modern Development Workflow
+
 - Edit source code with VS Code on your workstation
 - Compile and test on IBM i system
 - Version control with Git and GitHub
 - AI-powered assistance with IBM Bob
 
 ### Team Collaboration
+
 - Share code via GitHub
 - Review changes with pull requests
 - Track issues and features
 - Maintain code history
 
 ### Best Practices
+
 - Source code in version control
 - Modern IDE with syntax highlighting
 - Automated testing and CI/CD ready
@@ -221,6 +236,7 @@ Encountering issues? Check the **[Troubleshooting Guide](docs/en/troubleshooting
 ## 📚 Additional Resources
 
 ### Official Documentation
+
 - [IBM Bob Documentation](https://bob.ibm.com/docs)
 - [Code for IBM i Documentation](https://codefori.github.io/docs/)
 - [IBM i Open Source Documentation](https://ibmi-oss-docs.readthedocs.io/)
@@ -228,11 +244,13 @@ Encountering issues? Check the **[Troubleshooting Guide](docs/en/troubleshooting
 - [GitHub Documentation](https://docs.github.com/)
 
 ### Community
+
 - [IBM Community](https://community.ibm.com/)
 - [Code for IBM i Discord](https://discord.gg/codeforibmi)
 - [Stack Overflow - IBM Midrange](https://stackoverflow.com/questions/tagged/ibm-midrange)
 
 ### Hands-on Labs
+
 - [Bobathon Belgium](https://github.com/ibm-ncee-bobathons/bobathon-belgium/)
 - [IBM i Application Modernization with Bob](https://github.com/bmarolleau/IBM-i-Application-Modernization-with-Bob)
 
