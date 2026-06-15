@@ -21,7 +21,7 @@ Before starting, verify you have:
 - [ ] IBM i system (7.3 or higher) with SSH access
 - [ ] User profile with `*ALLOBJ` authority
 - [ ] Internet connectivity on IBM i
-- [ ] VS Code installed on workstation
+- [ ] IBM Bob installed on workstation
 - [ ] Git installed on workstation
 - [ ] Node.js LTS installed on workstation
 - [ ] IBM account for IBM Bob
@@ -198,9 +198,8 @@ sudo mount -t cifs //your-ibmi-system/SOURCES /mnt/ibmi-sources -o username=your
 
 ### Install Extensions
 
-1. Open VS Code
-2. Install extensions:
-   - **IBM Bob**
+1. Open IBM Bob
+2. Install extension:
    - **Code for IBM i**
 
 ### Sign In to IBM Bob
@@ -259,7 +258,7 @@ git push
 
 ### Verification Checklist
 
-- [ ] Can browse IFS in VS Code
+- [ ] Can browse IFS in IBM Bob
 - [ ] Can edit source files
 - [ ] Can compile programs
 - [ ] Can commit to Git
