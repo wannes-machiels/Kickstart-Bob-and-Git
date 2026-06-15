@@ -347,7 +347,7 @@ sudo mount -t cifs //your-ibmi-system/SOURCES /mnt/ibmi-sources -o username=your
    ls -la /mnt/ibmi-sources
    ```
 
-### Unmount
+### Unmount the Share
 
 ```bash
 sudo umount /mnt/ibmi-sources
